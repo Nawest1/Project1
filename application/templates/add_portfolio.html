@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Add a New Portfolio </h2>
+<br>
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.portfolio_name.label }} {{ form.portfolio_name }}
+                <br>
+                {{ form.submit }}
+            {{ message }}
+	    </form>
+</div>
+{% endblock body %}
