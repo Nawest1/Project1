@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from application import app, db
-#from application.forms import AddUser, CustomerLogin, AddBooking, UpdateBooking, UpdateAccount, AdminLogin
+from application.forms import AddPortfolio, AddStock
 from application.models import Portfolio, Stock
 
 @app.route("/")
@@ -15,8 +15,8 @@ def add_portfolio():
         portfolio = Portfolio(name = portfolio_name)
         db.session.add(portfolio)
         db.session.commit()
-        return redirect(url_for('add_position'))
-    return render_template('add_portfolio.html', form=form)
+        return redirect(url_for('add_stock'))
+    return render_template("add_portfolio.html", form=form)
 
 @app.route('/add-stockholding', methods=['GET','POST'])
 def add_stock():
@@ -28,8 +28,8 @@ def add_stock():
         newstock = form.newstock.data
         newposition = form.newposition.data
         portfolio_id = form.portfolio.data
-        newstock = Stock(stock = newstock, position = newposition, portfolio_id = portfolio_id)
-        db.session.add(newstock)
+        newstockholding = Stock(stock = newstock, position = newposition, portfolio_id = portfolio_id)
+        db.session.add(newstockholding)
         db.session.commit()
-        #return redirect(url_for('add_o', qid=newquest.id))
-    return render_template('add_stock.html', form=form)
+        return redirect(url_for('add_o', qid=newquest.id))
+    return render_template("add_stock.html", form=form)
