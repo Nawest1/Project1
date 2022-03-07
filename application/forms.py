@@ -12,3 +12,7 @@ class AddStock(FlaskForm):
     newposition = IntegerField('Number of shares')
     portfolio = SelectField('Add to portfolio:', choices=[])
     submit = SubmitField('Add Stock')
+
+class ViewPortfolio(FlaskForm):
+    portfolio = SelectField('Select portfolio name:', choices=[])
+    submit = SubmitField('Select this portfolio')

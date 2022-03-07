@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Select & View Portfolio Holdings </h2>
+<br>
+
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+		{{ form.portfolio.label }} {{ form.portfolio }}
+		<br>
+                {{ form.submit }}
+            {{ message }}
+	    </form>
+</div>
+{
+<h2> Portfolio Holdings </h2>
+<br>
+<h3> The {{portfolio}} portfolio holds the following stocks out of {{portflioholdings}} </h3>
+<br>
+{% endblock body %}
