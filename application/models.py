@@ -3,6 +3,7 @@ from application import db
 class Portfolio(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
+    stocks = db.relationship ('Stock', backref='portfolio')
 
 class Stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
