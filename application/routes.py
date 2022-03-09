@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from application import app, db
-from application.forms import AddPortfolio, AddStock #ViewPortfolio
+from application.forms import AddPortfolio, AddStock,UpdatePortfolio
 from application.models import Portfolio, Stock
 
 @app.route("/")
@@ -51,6 +51,21 @@ def delete(portfolio):
     db.session.delete(portfolio)
     db.session.commit()
     return redirect(url_for('view_portfolio'))
+
+@app.route('/update/<portfolio>', methods=['GET','POST'])
+def update_portfolio(portfolio):
+    form = UpdatePortfolio()
+    portfolio = Portfolio.query.filter_by(name=portfolio).first()
+    portfolio_id = portfolio.id
+    stocks= Stock.query.all()
+    for stock in portfolio.stocks:
+        form.stock.choices.append(stock.stock)
+    if request.method == 'POST':
+        newposition = form.newposition.data
+        stock.position = newposition
+        db.session.commit()
+        return redirect(url_for('view_portfolio'))
+    return render_template("update_portfolio.html", form=form)
 
 
 

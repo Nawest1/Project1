@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Update a Position </h2>
+<br>
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.stock.label }} {{ form.stock }}
+                {{ form.newposition.label }} {{ form.newposition }}
+                <br>
+                {{ form.submit }}
+            {{ message }}
+	    </form>
+</div>
+{% endblock body %}

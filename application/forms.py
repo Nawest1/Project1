@@ -13,6 +13,7 @@ class AddStock(FlaskForm):
     portfolio = SelectField('Add to portfolio:', choices=[])
     submit = SubmitField('Add Stock')
 
-class ViewPortfolio(FlaskForm):
-    portfolio = SelectField('Select portfolio name:', choices=[])
-    submit = SubmitField('Select this portfolio')
+class UpdatePortfolio(FlaskForm):
+    stock = SelectField('Update Position:', choices=[])
+    newposition = IntegerField('Number of shares')
+    submit = SubmitField('Change Position Size')
