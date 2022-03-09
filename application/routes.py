@@ -43,6 +43,17 @@ def view_portfolio():
     #stocks = Stock.query.all()
     #holdings=db.session.query(Portfolio,Stock).distinct(Portfolio.id)
     return render_template("viewportfolio.html", portfolio=portfolio, stocks=stocks)
+
+
+@app.route('/delete/<portfolio>', methods=['GET', 'POST'])
+def delete(portfolio):
+    portfolio = Portfolio.query.filter_by(name=portfolio).first()
+    db.session.delete(portfolio)
+    db.session.commit()
+    return redirect(url_for('view_portfolio'))
+
+
+
     
 
 
