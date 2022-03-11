@@ -3,11 +3,9 @@ Flask-SQLAlchemy
 Jinja2
 SQLAlchemy
 pymysql
-Werkzeug
 flask_wtf
 wtforms
 pytest
 pytest-cov
 flask-testing
-selenium
 DateTime
